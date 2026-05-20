@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Art Shift</title>
-<title>TALENTED COUNTRY 2026 / ЖИТОМИР</title>
+<title>TALENTED COUNTRY 2026 / РІВНЕ</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 /* === Кольорова палітра === */
@@ -349,7 +349,7 @@ body { padding-top: 110px; }
 <audio id="bgMusic" src="Digital Waves.mp3" loop></audio>
 
 <header class="header">
-<div class="logo-text">TALENTED COUNTRY <span>2026</span> / Житомир</div>
+<div class="logo-text">TALENTED COUNTRY <span>2026</span> / РІВНЕ</div>
 <nav class="nav-menu">
 <ul>
 <li><a href="#home">Головна</a></li>
@@ -392,62 +392,11 @@ body { padding-top: 110px; }
 </div>
 </div>
 
-<button class="btn-submit" onclick="document.getElementById('form').scrollIntoView()">Подати заявку на участь</button>
-</section>
+<a href="Положення (1).pdf" class="children-link"> ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
 
-<div class="container">
-<div class="content-grid">
+<a href="ДОГОВІР.pdf" class="children-link"> Ознайомитися з публічною офертою</a>
 
-<section class="nominations-section" id="nominations">
-<h2 class="section-title">Номінації</h2>
-<div class="nominations-list">
-<div class="nomination-card">
-<h4>Хореографія</h4>
-<ul>
-<li>народна хореографія (народний танець, танці народів світу, народний стилізований танець)</li>
-<li>класична хореографія</li>
-<li>сучасна хореографія (contemporary, contemporary-jazz, модерн, джаз-модерн та ін.)</li>
-<li>естрадна хореографія</li>
-<li>фольклорна композиція</li>
-<li>театралізований танець</li>
-<li>бальна хореографія</li>
-<li>Спортивні танці (в тому числі чарлідінг)</li>
-<li>street dance show (hip-hop, Jazz-funk, Vogue, Breakdance, диско, techno та ін.)</li>
-<li>східний танець</li>
-<li>вільна танцювальна категорія (для постановок, які не відповідають жодному з вищевказаних жанрів)</li>
-</ul>
-</div>
 
-<div class="nomination-card">
-<h4>Вокал</h4>
-<ul>
-<li>естрадний вокал</li>
-<li>народний вокал</li>
-<li>академічний вокал</li>
-<li>джазовий вокал</li>
-<li>авторська пісня</li>
-<li>шоу-композиція</li>
-</ul>
-</div>
-
-<div class="nomination-card">
-<h4>Театральне мистецтво</h4>
-<p>Художнє читання, театри мініатюр, ляльок, пластики, драматичний театр.</p>
-</div>
-</div>
-
-<div class="nomination-card">
-<h4>Інструментальне мистецтво</h4>
-<ul>
-<li>фортепіано</li>
-<li>струнні інструменти</li>
-<li>народні інструменти</li>
-<li>духові</li>
-<li>ударні інструменти</li>
-</ul>
-</div>
-
-<a href="Taiented Country 2026 (Офіційне положення).pdf" class="children-link"> ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
 </section>
 
 <section class="form-section" id="form">
@@ -460,6 +409,7 @@ body { padding-top: 110px; }
 <select name="Форма участі" required>
 <option value="">-- ОБЕРІТЬ --</option>
 <option value="Очна">ОЧНА</option>
+<option value="Очна">ДИСТАНЦІЙНА</option>
 </select>
 </div>
 
@@ -571,9 +521,14 @@ body { padding-top: 110px; }
 <input type="text" name="Додатково">
 </div>
 
+<div class="form-group">
+<label>Фото, відео матеріали для дистанційної форми (посилання)</label>
+<input type="text" name="Додатково">
+</div>
+
 <div class="checkbox-wrapper">
 <input type="checkbox" id="agree" required>
-<label for="agree">Я ПОГОДЖУЮСЬ З ПОЛОЖЕННЯМ ТА ОБРОБКОЮ ДАНИХ</label>
+<label for="agree">Я ПОГОДЖУЮСЬ З ПОЛОЖЕННЯМ, ОБРОБКОЮ ДАНИХ ТА ПУБЛІЧНОЮ ОФЕРТОЮ</label>
 </div>
 
 <div class="form-actions">
@@ -658,8 +613,8 @@ nomSelect.innerHTML = '<option value="">-- СПОЧАТКУ ОБЕРІТЬ ЖА�
 
 // ТАЙМЕРИ (ОНОВЛЕНО ДАТИ)
 function updateCountdown() {
-const targetComp = new Date("May, 16, 2026 10:00:00").getTime();
-const targetReg = new Date("May, 10, 2026 23:59:59").getTime();
+const targetComp = new Date("June, 13, 2026 10:00:00").getTime();
+const targetReg = new Date("June, 06, 2026 23:59:59").getTime();
 
 function calculate(target, prefix) {
 const now = new Date().getTime();
