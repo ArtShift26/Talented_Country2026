@@ -104,46 +104,171 @@ text-transform: uppercase;
 letter-spacing: 3px;
 }
 
-/* === Таймери === */
-.dual-countdown-container {
-display: flex;
-justify-content: center;
-gap: 20px;
-margin-bottom: 40px;
-flex-wrap: wrap;
+/* === СТИЛЬ СІТКИ ТА МІНІ-БЛОКІВ З ТАЙМЕРАМИ (ОНОВЛЕНО НА 8 КОЛОНОК) === */
+.festivals-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 12px;
+margin: 0 auto 40px auto;
+max-width: 1600px;
 }
 
-.countdown-group { text-align: center; flex: 1; min-width: 280px; max-width: 450px; }
-.countdown-label { font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; color: #ddd; }
+@media (min-width: 1200px) {
+.festivals-container {
+grid-template-columns: repeat(8, 1fr);
+}
+}
 
-.countdown-wrapper {
-background-color: rgba(255, 255, 255, 0.05);
-padding: clamp(10px, 2vw, 20px);
-border-radius: 15px;
+.fest-box {
+background: rgba(10, 10, 30, 0.8);
 border: 1px solid rgba(0, 242, 255, 0.3);
+padding: 15px 10px;
+border-radius: 12px;
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+box-shadow: 0 0 15px rgba(0, 242, 255, 0.05);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+min-height: 420px; /* Висота адаптована під нові елементи */
 backdrop-filter: blur(5px);
 }
 
-.countdown { display: flex; gap: 8px; justify-content: center; }
-.countdown-item {
-background: rgba(0, 242, 255, 0.1);
+.fest-box:hover {
+background-color: rgba(0, 242, 255, 0.05);
+border-color: var(--primary-color);
+transform: translateY(-8px);
+box-shadow: 0 0 25px rgba(0, 242, 255, 0.25);
+}
+
+.fest-title {
+font-size: 0.85rem;
+font-weight: bold;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+color: #fff;
+margin-bottom: 8px;
+transition: 0.3s;
+line-height: 1.2;
+display: block;
+text-decoration: none;
+}
+
+.fest-box:hover .fest-title {
+color: var(--primary-color);
+text-shadow: 0 0 10px var(--primary-color);
+}
+
+.fest-desc {
+font-size: 0.65rem;
+color: #b0b0ff;
+line-height: 1.3;
+margin-bottom: 8px;
+}
+
+.fest-date {
+font-size: 0.75rem;
+font-weight: 500;
+color: #ffffff; /* Білий колір для дати */
+margin-bottom: 2px;
+}
+
+.fest-city {
+font-size: 0.8rem;
+font-weight: bold;
+color: var(--primary-color);
+text-transform: uppercase;
+margin-bottom: 10px;
+letter-spacing: 1px;
+}
+
+/* СТИЛЬ ДЛЯ КНОПОК ПОЛОЖЕННЯ ПІД КОЛОНКАМИ */
+.fest-pdf-btn {
+display: block;
+background: transparent;
 color: var(--primary-color);
 border: 1px solid var(--primary-color);
-padding: 10px 5px;
-border-radius: 8px;
-font-size: clamp(1.2rem, 3vw, 1.6rem);
+padding: 8px 5px;
+font-size: 0.6rem;
+font-weight: bold;
+border-radius: 6px;
+cursor: pointer;
+transition: 0.3s;
+text-transform: uppercase;
+margin-top: 8px;
+box-shadow: 0 0 8px rgba(0, 242, 255, 0.1);
+text-decoration: none;
+letter-spacing: 0.5px;
+}
+
+.fest-pdf-btn:hover {
+background: var(--primary-color);
+color: #000;
+box-shadow: 0 0 12px var(--primary-color);
+}
+
+/* Фіолетова кнопка для парних карток фестивалів */
+.fest-box:nth-child(even) .fest-pdf-btn {
+color: #cc99ff;
+border: 1px solid var(--secondary-color);
+box-shadow: 0 0 8px rgba(112, 0, 255, 0.1);
+}
+
+.fest-box:nth-child(even) .fest-pdf-btn:hover {
+background: var(--secondary-color);
+color: #fff;
+box-shadow: 0 0 12px var(--secondary-color);
+}
+
+.fest-timer-section {
+margin-top: auto;
+border-top: 1px dashed rgba(255, 255, 255, 0.1);
+padding-top: 10px;
+}
+
+.fest-timer-label {
+font-size: 0.6rem;
+font-weight: bold;
+text-transform: uppercase;
+color: #bbb;
+margin-bottom: 4px;
+text-align: center;
+}
+
+.fest-timer-display {
+display: flex;
+gap: 2px;
+justify-content: center;
+margin-bottom: 8px;
+}
+
+.fest-timer-unit {
+background: rgba(0, 242, 255, 0.07);
+color: var(--primary-color);
+border: 1px solid rgba(0, 242, 255, 0.4);
+padding: 3px 1px;
+border-radius: 4px;
+font-size: 0.75rem;
 font-weight: bold;
 flex: 1;
-max-width: 85px;
+max-width: 35px;
 display: flex;
 flex-direction: column;
 align-items: center;
 }
-.competition-countdown-group .countdown-wrapper { border-color: var(--secondary-color); }
-.competition-countdown-group .countdown-item {
-background: rgba(112, 0, 255, 0.1); color: #cc99ff; border: 1px solid var(--secondary-color);
+
+.fest-timer-unit small {
+font-size: 0.3rem;
+text-transform: uppercase;
+color: #fff;
+margin-top: 1px;
 }
-.countdown-item small { font-size: 0.5rem; text-transform: uppercase; color: #fff; margin-top: 5px; }
+
+/* Альтернативні стилі фіолетового таймера для естетики (наприклад, для парних фестивалів) */
+.fest-box:nth-child(even) .fest-timer-unit {
+background: rgba(112, 0, 255, 0.07);
+color: #cc99ff;
+border: 1px solid var(--secondary-color);
+}
 
 /* === Кнопки === */
 .btn-submit {
@@ -289,7 +414,7 @@ text-transform: uppercase;
 
 .form-actions .btn-submit { width: 100%; border-radius: 8px; margin-top: 20px; }
 
-/* === ФУТЕР (ОНОВЛЕНО) === */
+/* === ФУТЕР === */
 .footer {
 text-align: center;
 padding: 40px;
@@ -349,7 +474,7 @@ body { padding-top: 110px; }
 <audio id="bgMusic" src="Digital Waves.mp3" loop></audio>
 
 <header class="header">
-<div class="logo-text">TALENTED COUNTRY <span>2026-2027</span> </div>
+<div class="logo-text">Art Shift <span>Мистецький простір</span> </div>
 <nav class="nav-menu">
 <ul>
 <li><a href="#home">Головна</a></li>
@@ -360,42 +485,231 @@ body { padding-top: 110px; }
 </header>
 
 <section class="hero-section" id="home">
-<section class="hero-section" id="home">
 <h1 class="main-title">Art <span>Shift</span></h1>
 <p class="subtitle">Мистецький простір</p>
-<h1 class="main-title">TALENTED <span>COUNTRY</span> 2026-2027 </h1>
-<p class="subtitle">Всеукраїнський фестиваль-конкурс мистецтв</p>
 
-<div class="dual-countdown-container">
-<div class="countdown-group registration-countdown-group">
-<p class="countdown-label">Кінець реєстрації</p>
-<div class="countdown-wrapper">
-<div class="countdown">
-<div class="countdown-item"><span id="reg-cd-days">00</span><small>Дні</small></div>
-<div class="countdown-item"><span id="reg-cd-hours">00</span><small>Год</small></div>
-<div class="countdown-item"><span id="reg-cd-minutes">00</span><small>Хв</small></div>
-<div class="countdown-item"><span id="reg-cd-seconds">00</span><small>Сек</small></div>
-</div>
-</div>
-</div>
+<!-- Вісім колонок фестивалів з індивідуальними таймерами та кнопками завантаження положень -->
+<div class="festivals-container">
+  
+  <!-- ФЕСТИВАЛЬ 1 (Дніпро) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">TALENTED COUNTRY FEST</div>
+      <div class="fest-desc">Всеукраїнський різножанровий фестиваль-конкурс мистецтв</div>
+      <div class="fest-date">26.09.2026</div>
+      <div class="fest-city">м. Дніпро</div>
+      <a href="TALENTED COUNTRY.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="tc1-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="tc1-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="tc1-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="tc1-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="tc1-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="tc1-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="tc1-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="tc1-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
 
-<div class="countdown-group competition-countdown-group">
-<p class="countdown-label">До початку конкурсу</p>
-<div class="countdown-wrapper">
-<div class="countdown">
-<div class="countdown-item"><span id="comp-cd-days">00</span><small>Дні</small></div>
-<div class="countdown-item"><span id="comp-cd-hours">00</span><small>Год</small></div>
-<div class="countdown-item"><span id="comp-cd-minutes">00</span><small>Хв</small></div>
-<div class="countdown-item"><span id="comp-cd-seconds">00</span><small>Сек</small></div>
-</div>
-</div>
-</div>
-</div>
+  <!-- ФЕСТИВАЛЬ 2 (Житомир Dance) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">VIVA DANCE FEST</div>
+      <div class="fest-desc">Міжнародний хореографічний фестиваль-конкурс мистецтв</div>
+      <div class="fest-date">10.10.2026</div>
+      <div class="fest-city">м. Житомир</div>
+      <a href="VIVA DANCE.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vd1-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vd1-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vd1-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vd1-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vd1-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vd1-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vd1-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vd1-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
 
-<a href="Положення (1).pdf" class="children-link"> ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+  <!-- ФЕСТИВАЛЬ 3 (Житомир Music) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">VIVA MUSIC FEST</div>
+      <div class="fest-desc">Міжнародний фестиваль-конкурс музичного мистецтва</div>
+      <div class="fest-date">10.11.2026</div>
+      <div class="fest-city">м. Житомир</div>
+      <a href="Положення_Viva_Music_Zhytomyr.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vm1-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vm1-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vm1-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vm1-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vm1-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vm1-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vm1-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vm1-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФЕСТИВАЛЬ 4 (Хмельницький) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">TALENTED COUNTRY FEST</div>
+      <div class="fest-desc">Всеукраїнський різножанровий фестиваль-конкурс мистецтв</div>
+      <div class="fest-date">18.10.2026</div>
+      <div class="fest-city">м. Хмельницький</div>
+      <a href="TALENTED COUNTRY.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="tc2-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="tc2-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="tc2-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="tc2-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="tc2-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="tc2-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="tc2-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="tc2-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФЕСТИВАЛЬ 5 (Полтава Dance) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">VIVA DANCE FEST</div>
+      <div class="fest-desc">Міжнародний хореографічний фестиваль-конкурс мистецтв</div>
+      <div class="fest-date">07.11.2026</div>
+      <div class="fest-city">м. Полтава</div>
+      <a href="VIVA DANCE.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vda-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vda-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vda-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vda-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vda-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vda-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vda-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vda-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФЕСТИВАЛЬ 6 (Полтава Music) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">VIVA MUSIC FEST</div>
+      <div class="fest-desc">Міжнародний фестиваль-конкурс музичного мистецтва</div>
+      <div class="fest-date">07.11.2026</div>
+      <div class="fest-city">м. Полтава</div>
+      <a href="Положення_Viva_Music_Poltava.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vmu-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vmu-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vmu-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vmu-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="vmu-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="vmu-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="vmu-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="vmu-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФЕСТИВАЛЬ 7 (Полтава Dreams) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">DREAMS’ GLOW FEST</div>
+      <div class="fest-desc">Міжнародний різножанровий фестиваль-конкурс мистецтв</div>
+      <div class="fest-date">28.11.2026</div>
+      <div class="fest-city">м. Полтава</div>
+      <a href="DREAMS’ GLOW.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="dg-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="dg-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="dg-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="dg-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="dg-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="dg-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="dg-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="dg-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ФЕСТИВАЛЬ 8 (Кременчук) -->
+  <div class="fest-box">
+    <div>
+      <div class="fest-title">TALENTED COUNTRY FEST</div>
+      <div class="fest-desc">Всеукраїнський різножанровий фестиваль-конкурс мистецтв</div>
+      <div class="fest-date">13.02.2027</div>
+      <div class="fest-city">м. Кременчук</div>
+      <a href="TALENTED COUNTRY.pdf" class="fest-pdf-btn" target="_blank">ПОЛОЖЕННЯ (СКАЧАТИ PDF)</a>
+    </div>
+    <div class="fest-timer-section">
+      <p class="fest-timer-label">Кінець реєстрації</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="tc3-reg-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="tc3-reg-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="tc3-reg-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="tc3-reg-secs">00</span><small>сек</small></div>
+      </div>
+      <p class="fest-timer-label">До конкурсу</p>
+      <div class="fest-timer-display">
+        <div class="fest-timer-unit"><span id="tc3-comp-days">00</span><small>дн</small></div>
+        <div class="fest-timer-unit"><span id="tc3-comp-hours">00</span><small>год</small></div>
+        <div class="fest-timer-unit"><span id="tc3-comp-mins">00</span><small>хв</small></div>
+        <div class="fest-timer-unit"><span id="tc3-comp-secs">00</span><small>сек</small></div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <a href="ДОГОВІР.pdf" class="children-link"> Ознайомитися з публічною офертою</a>
-
 
 </section>
 
@@ -611,29 +925,103 @@ nomSelect.innerHTML = '<option value="">-- СПОЧАТКУ ОБЕРІТЬ ЖА�
 }
 }
 
-// ТАЙМЕРИ (ОНОВЛЕНО ДАТИ)
+// ТАЙМЕРИ ДЛЯ КОЖНОГО З 8 ФЕСТИВАЛІВ
 function updateCountdown() {
-const targetComp = new Date("June, 13, 2026 10:00:00").getTime();
-const targetReg = new Date("June, 08, 2026 23:59:59").getTime();
+  const targets = {
+    // 1. TALENTED COUNTRY (Дніпро): Реєстрація 21.09.2026, Фест 26.09.2026
+    tc1: {
+      reg: new Date("September 21, 2026 23:59:59").getTime(),
+      comp: new Date("September 26, 2026 10:00:00").getTime()
+    },
+    // 2. VIVA DANCE (Житомир): Реєстрація 07.10.2026, Фест 10.10.2026
+    vd1: {
+      reg: new Date("October 7, 2026 23:59:59").getTime(),
+      comp: new Date("October 10, 2026 10:00:00").getTime()
+    },
+    // 3. VIVA MUSIC (Житомир): Реєстрація 07.10.2026, Фест 10.11.2026
+    vm1: {
+      reg: new Date("October 7, 2026 23:59:59").getTime(),
+      comp: new Date("November 10, 2026 10:00:00").getTime()
+    },
+    // 4. TALENTED COUNTRY (Хмельницький): Реєстрація 11.10.2026, Фест 18.10.2026
+    tc2: {
+      reg: new Date("October 11, 2026 23:59:59").getTime(),
+      comp: new Date("October 18, 2026 10:00:00").getTime()
+    },
+    // 5. VIVA DANCE (Полтава): Реєстрація 01.11.2026, Фест 07.11.2026
+    vda: {
+      reg: new Date("November 1, 2026 23:59:59").getTime(),
+      comp: new Date("November 7, 2026 10:00:00").getTime()
+    },
+    // 6. VIVA MUSIC (Полтава): Реєстрація 01.11.2026, Фест 07.11.2026
+    vmu: {
+      reg: new Date("November 1, 2026 23:59:59").getTime(),
+      comp: new Date("November 7, 2026 10:00:00").getTime()
+    },
+    // 7. DREAMS’ GLOW (Полтава): Реєстрація 21.11.2026, Фест 28.11.2026
+    dg: {
+      reg: new Date("November 21, 2026 23:59:59").getTime(),
+      comp: new Date("November 28, 2026 10:00:00").getTime()
+    },
+    // 8. TALENTED COUNTRY (Кременчук): Реєстрація 06.02.2027, Фест 13.02.2027
+    tc3: {
+      reg: new Date("February 6, 2027 23:59:59").getTime(),
+      comp: new Date("February 13, 2027 10:00:00").getTime()
+    }
+  };
 
-function calculate(target, prefix) {
-const now = new Date().getTime();
-const dist = target - now;
+  function calculate(targetTime, elementIds) {
+    const now = new Date().getTime();
+    const dist = targetTime ? targetTime - now : 0;
 
-const d = dist > 0 ? Math.floor(dist / (1000 * 60 * 60 * 24)) : 0;
-const h = dist > 0 ? Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) : 0;
-const m = dist > 0 ? Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60)) : 0;
-const s = dist > 0 ? Math.floor((dist % (1000 * 60)) / 1000) : 0;
+    const d = dist > 0 ? Math.floor(dist / (1000 * 60 * 60 * 24)) : 0;
+    const h = dist > 0 ? Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) : 0;
+    const m = dist > 0 ? Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60)) : 0;
+    const s = dist > 0 ? Math.floor((dist % (1000 * 60)) / 1000) : 0;
 
-const f = (n) => String(n).padStart(2, '0');
-if(document.getElementById(prefix + '-cd-days')) {
-document.getElementById(prefix + '-cd-days').innerText = f(d);
-document.getElementById(prefix + '-cd-hours').innerText = f(h);
-document.getElementById(prefix + '-cd-minutes').innerText = f(m);
-document.getElementById(prefix + '-cd-seconds').innerText = f(s);
-}
-}
-setInterval(() => { calculate(targetReg, 'reg'); calculate(targetComp, 'comp'); }, 1000);
+    const f = (n) => String(n).padStart(2, '0');
+    
+    if (document.getElementById(elementIds.days)) {
+      document.getElementById(elementIds.days).innerText = f(d);
+      document.getElementById(elementIds.hours).innerText = f(h);
+      document.getElementById(elementIds.mins).innerText = f(m);
+      document.getElementById(elementIds.secs).innerText = f(s);
+    }
+  }
+
+  setInterval(() => {
+    // 1. Дніпро
+    calculate(targets.tc1.reg, { days: 'tc1-reg-days', hours: 'tc1-reg-hours', mins: 'tc1-reg-mins', secs: 'tc1-reg-secs' });
+    calculate(targets.tc1.comp, { days: 'tc1-comp-days', hours: 'tc1-comp-hours', mins: 'tc1-comp-mins', secs: 'tc1-comp-secs' });
+
+    // 2. Житомир (Dance)
+    calculate(targets.vd1.reg, { days: 'vd1-reg-days', hours: 'vd1-reg-hours', mins: 'vd1-reg-mins', secs: 'vd1-reg-secs' });
+    calculate(targets.vd1.comp, { days: 'vd1-comp-days', hours: 'vd1-comp-hours', mins: 'vd1-comp-mins', secs: 'vd1-comp-secs' });
+
+    // 3. Житомир (Music)
+    calculate(targets.vm1.reg, { days: 'vm1-reg-days', hours: 'vm1-reg-hours', mins: 'vm1-reg-mins', secs: 'vm1-reg-secs' });
+    calculate(targets.vm1.comp, { days: 'vm1-comp-days', hours: 'vm1-comp-hours', mins: 'vm1-comp-mins', secs: 'vm1-comp-secs' });
+
+    // 4. Хмельницький
+    calculate(targets.tc2.reg, { days: 'tc2-reg-days', hours: 'tc2-reg-hours', mins: 'tc2-reg-mins', secs: 'tc2-reg-secs' });
+    calculate(targets.tc2.comp, { days: 'tc2-comp-days', hours: 'tc2-comp-hours', mins: 'tc2-comp-mins', secs: 'tc2-comp-secs' });
+
+    // 5. Полтава (Dance)
+    calculate(targets.vda.reg, { days: 'vda-reg-days', hours: 'vda-reg-hours', mins: 'vda-reg-mins', secs: 'vda-reg-secs' });
+    calculate(targets.vda.comp, { days: 'vda-comp-days', hours: 'vda-comp-hours', mins: 'vda-comp-mins', secs: 'vda-comp-secs' });
+
+    // 6. Полтава (Music)
+    calculate(targets.vmu.reg, { days: 'vmu-reg-days', hours: 'vmu-reg-hours', mins: 'vmu-reg-mins', secs: 'vmu-reg-secs' });
+    calculate(targets.vmu.comp, { days: 'vmu-comp-days', hours: 'vmu-comp-hours', mins: 'vmu-comp-mins', secs: 'vmu-comp-secs' });
+
+    // 7. Полтава (Dreams)
+    calculate(targets.dg.reg, { days: 'dg-reg-days', hours: 'dg-reg-hours', mins: 'dg-reg-mins', secs: 'dg-reg-secs' });
+    calculate(targets.dg.comp, { days: 'dg-comp-days', hours: 'dg-comp-hours', mins: 'dg-comp-mins', secs: 'dg-comp-secs' });
+
+    // 8. Кременчук
+    calculate(targets.tc3.reg, { days: 'tc3-reg-days', hours: 'tc3-reg-hours', mins: 'tc3-reg-mins', secs: 'tc3-reg-secs' });
+    calculate(targets.tc3.comp, { days: 'tc3-comp-days', hours: 'tc3-comp-hours', mins: 'tc3-comp-mins', secs: 'tc3-comp-secs' });
+  }, 1000);
 }
 
 // МУЗИКА
